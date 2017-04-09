@@ -24,12 +24,9 @@ public class StoryJsonParser {
     private Gson gson;
     private JsonParser parser;
 
-    private String jsonStory;
-
-    private String initial;
-
 
     public StoryJsonParser() {
+
         gsonBuilder = new GsonBuilder();
         gson = gsonBuilder.create();
         parser = new JsonParser();
@@ -43,20 +40,16 @@ public class StoryJsonParser {
      * @return created MODEL Story
      */
     public Story parseStory(String json) {
-        this.jsonStory = json;
         Story story = new Story();
-        loadStoryObjectWithData(story);
-
+        loadStoryObjectWithData(story, json);
         return story;
     }
 
-    public void loadStoryObjectWithData(Story storyToLoad){
-        StoryBasicGson storyBasics = gson.fromJson(jsonStory, StoryBasicGson.class);
+    public void loadStoryObjectWithData(Story storyToLoad, String json){
+        StoryBasicGson storyBasics = gson.fromJson(json, StoryBasicGson.class);
         storyToLoad.setStoryBasicData(storyBasics);
-        initial = storyBasics.getDataInitial();
 
-
-        Object o = gson.fromJson(jsonStory, Object.class);
+        Object o = gson.fromJson(json, Object.class);
         /*
         The following line seems like a big ****
         Object o is a LinkedTreeMap so I need to cast it thrice to get LinkedTreeMap of stitches.
@@ -104,7 +97,7 @@ public class StoryJsonParser {
 
             storyToLoad.addToStitchHashMap(nameOfTheStitch, toAdd);
         }
-        storyToLoad.setActualStitch(initial);
+        storyToLoad.setActualStitch(storyToLoad.getStoryBasicData().getDataInitial());
 
     }
 
