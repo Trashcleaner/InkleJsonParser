@@ -33,7 +33,7 @@ public class Stitch implements Serializable{
     /**
      * "Name" of the Stitch which is a seamless (not an option) continuation of the "text".
      */
-    private String divertName;
+    private DivertGson divertName;
     private boolean hasDivert = false;
 
     /**
@@ -48,32 +48,11 @@ public class Stitch implements Serializable{
     private FlagNameGson flagName;
 
     private PageLabelGson pageLabel;
-    private PageNameGson pageName;
+    private PageNumGson pageName;
     private RunOnGson runOn;
 
     public Stitch(){
 
-    }
-
-
-    public Stitch(String name, String text, ArrayList<OptionGson> options) {
-        this(name, text, options, false, null);
-    }
-
-    /**
-     * Use when stitch is diverted into more texts.
-     * @param name
-     * @param text
-     * @param options
-     * @param hasDivert
-     * @param divertName
-     */
-    public Stitch(String name, String text, ArrayList<OptionGson> options, boolean hasDivert, String divertName) {
-        this.name = name;
-        this.text = text;
-        this.options = options;
-        this.hasDivert = hasDivert;
-        this.divertName = divertName;
     }
 
 
@@ -117,11 +96,11 @@ public class Stitch implements Serializable{
         this.notIfCondition = notIfCondition;
     }
 
-    public String getDivertName() {
+    public DivertGson getDivertName() {
         return divertName;
     }
 
-    public void setDivertName(String divertName) {
+    public void setDivertName(DivertGson divertName) {
         this.divertName = divertName;
     }
 
@@ -149,11 +128,11 @@ public class Stitch implements Serializable{
         this.pageLabel = pageLabel;
     }
 
-    public PageNameGson getPageName() {
+    public PageNumGson getPageName() {
         return pageName;
     }
 
-    public void setPageName(PageNameGson pageName) {
+    public void setPageName(PageNumGson pageName) {
         this.pageName = pageName;
     }
 

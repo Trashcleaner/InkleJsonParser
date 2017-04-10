@@ -9,7 +9,18 @@ public class RunOnGson implements Serializable{
 
     boolean runOn;
 
+    public void setRunOn(boolean runOn) {
+        this.runOn = runOn;
+    }
+
     public boolean isRunOn() {
         return runOn;
+    }
+
+    @Override
+    public String toString() {
+        return "RunOnGson{" +
+                "runOn=" + runOn +
+                '}';
     }
 }

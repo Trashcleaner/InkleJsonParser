@@ -57,7 +57,7 @@ public class Story implements Serializable{
         Stitch firstStitch = actualStitch;
         while (actualStitch.hasDivert()){
             stitchDivertList.add(actualStitch);
-            setActualStitch(actualStitch.getDivertName());
+            setActualStitch(actualStitch.getDivertName().getDivert());
         }
         stitchDivertList.add(actualStitch); //last one which already has options
         setActualStitch(firstStitch);

@@ -8,8 +8,18 @@ import java.io.Serializable;
 public class DivertGson implements Serializable{
     String divert;
 
+    public void setDivert(String divert) {
+        this.divert = divert;
+    }
 
     public String getDivert() {
         return divert;
+    }
+
+    @Override
+    public String toString() {
+        return "DivertGson{" +
+                "divert='" + divert + '\'' +
+                '}';
     }
 }

@@ -45,7 +45,7 @@ public class StoryJsonParser {
         return story;
     }
 
-    public void loadStoryObjectWithData(Story storyToLoad, String json){
+    private void loadStoryObjectWithData(Story storyToLoad, String json){
         StoryBasicGson storyBasics = gson.fromJson(json, StoryBasicGson.class);
         storyToLoad.setStoryBasicData(storyBasics);
 
@@ -75,7 +75,8 @@ public class StoryJsonParser {
             boolean isDiverted = false;
             String divertName = null;
             for (int j = 1; j < array.size(); j++) {
-                String s = array.get(j).toString();
+                //TADY BUDE VYUZIT TYPE ADAPTER
+                /*String s = array.get(j).toString();
                 if(s.contains("\"linkPath\":") && s.contains("\"option\":")){
                     OptionGson option = gson.fromJson(s, OptionGson.class);
                     optionsToAddedStitch.add(option);
@@ -85,15 +86,10 @@ public class StoryJsonParser {
                     DivertGson divert = gson.fromJson(s, DivertGson.class);
                     divertName = divert.getDivert();
 
-                }
+                }*/
             }
             Stitch toAdd
-                    = new Stitch
-                    (nameOfTheStitch,
-                            array.get(0).getAsString(),
-                            optionsToAddedStitch,
-                            isDiverted,
-                            divertName);
+                    = new Stitch();
 
             storyToLoad.addToStitchHashMap(nameOfTheStitch, toAdd);
         }

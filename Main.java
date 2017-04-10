@@ -23,12 +23,16 @@ public class Main {
         //main.execute();
         main.executeWithTypeAdapter();
 
+        //StoryJsonParser parser = new StoryJsonParser();
+        //parser.parseStory(ConstantTestJsons.jsonZrbj);
+
     }
 
     private void executeWithTypeAdapter() {
         final GsonBuilder gsonBuilder  = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Stitch.class, new StitchTypeAdapter());
         final Gson gson = gsonBuilder.create();
+        System.out.println("The stitch in JSON: " + ConstantTestJsons.oneParticularStitch);
         Stitch stitch = gson.fromJson(ConstantTestJsons.oneParticularStitch, Stitch.class);
         System.out.println(stitch.toString());
 

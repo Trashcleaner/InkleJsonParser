@@ -6,7 +6,18 @@ package gson_objects;
 public class NotIfConditionGson {
     String notIfCondition;
 
+    public void setNotIfCondition(String notIfCondition) {
+        this.notIfCondition = notIfCondition;
+    }
+
     public String getNotIfCondition() {
         return notIfCondition;
+    }
+
+    @Override
+    public String toString() {
+        return "NotIfConditionGson{" +
+                "notIfCondition='" + notIfCondition + '\'' +
+                '}';
     }
 }

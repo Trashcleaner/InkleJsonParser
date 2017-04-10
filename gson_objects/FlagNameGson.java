@@ -9,7 +9,18 @@ public class FlagNameGson implements Serializable{
 
     String flagName;
 
+    public void setFlagName(String flagName) {
+        this.flagName = flagName;
+    }
+
     public String getFlagName() {
         return flagName;
+    }
+
+    @Override
+    public String toString() {
+        return "FlagNameGson{" +
+                "flagName='" + flagName + '\'' +
+                '}';
     }
 }
