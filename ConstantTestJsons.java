@@ -10,4 +10,12 @@ public class ConstantTestJsons {
 
     static final String oneParticularStitch = "{\"soYouDontTrustMe\":{\"content\":[\"\\\"So you don't trust me. After everything, you still don't. How long have we known each other? How long were we... I don't know. Is there anything I could have done to make you trust me?\\\"\",{\"ifConditions\":null,\"notIfConditions\":null,\"linkPath\":\"iDidIDidOnlyYouD\",\"option\":\"\\\"You could have kept that trust.\\\"\"},{\"ifConditions\":null,\"notIfConditions\":null,\"linkPath\":\"toldYouWhatThere\",\"option\":\"\\\"You could have told me yourself.\\\"\"},{\"ifConditions\":null,\"notIfConditions\":null,\"linkPath\":\"iNeverWantedToHu\",\"option\":\"\\\"I don't know. I just don't know.\\\"\"},{\"flagName\":\"don't trust\"},{\"pageNum\":2},{\"pageLabel\":\"Don't trust me\"}]}}";
 
+
+    static final String veryShortStitch = "{\"never\":{\"content\":[\"\\\"Never. \",{\"runOn\":true},{\"divert\":\"myDarling\"}]}}";
+
+
+    static final String decentStitch = "{\"theItemsThemselv\":{\"content\":[\"The items themselves did not seem outwardly curious: they were made strange only by their placement alongside each other.\",{\"option\":\"Examine the key\",\"linkPath\":\"theKeyWasSimplyA\",\"ifConditions\":null,\"notIfConditions\":[{\"notIfCondition\":\"examined key\"},{\"notIfCondition\":\"number examined >= 3\"}]},{\"option\":\"Examine the paper\",\"linkPath\":\"thePaperWasMostC\",\"ifConditions\":null,\"notIfConditions\":[{\"notIfCondition\":\"examined paper\"}]},{\"option\":\"Examine the peg\",\"linkPath\":\"theWoodenPegAndS\",\"ifConditions\":null,\"notIfConditions\":[{\"notIfCondition\":\"examined peg\"}]},{\"option\":\"Examine the discs\",\"linkPath\":\"lessInterestingW\",\"ifConditions\":[{\"ifCondition\":\"number examined >= 1\"}],\"notIfConditions\":[{\"notIfCondition\":\"examined discs\"}]},{\"option\":\"\\\"It is a curious collection, no doubt.\\\"\",\"linkPath\":\"iNoddedSlightlyI\",\"ifConditions\":[{\"ifCondition\":\"number examined >= 2\"}],\"notIfConditions\":null},{\"flagName\":\"seen items\"},{\"ifCondition\":\"number examined = 0\"},{\"pageNum\":8},{\"pageLabel\":\"Examining items\"}]}}";
+
+
+
 }

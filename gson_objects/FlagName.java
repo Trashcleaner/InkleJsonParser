@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by obrusvit on 8.4.17.
  */
-public class FlagNameGson implements Serializable{
+public class FlagName implements Serializable{
 
     String flagName;
 
@@ -19,7 +19,7 @@ public class FlagNameGson implements Serializable{
 
     @Override
     public String toString() {
-        return "FlagNameGson{" +
+        return "FlagName{" +
                 "flagName='" + flagName + '\'' +
                 '}';
     }

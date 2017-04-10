@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by obrusvit on 18.2.17.
  */
-public class DivertGson implements Serializable{
+public class Divert implements Serializable{
     String divert;
 
     public void setDivert(String divert) {
@@ -18,7 +18,7 @@ public class DivertGson implements Serializable{
 
     @Override
     public String toString() {
-        return "DivertGson{" +
+        return "Divert{" +
                 "divert='" + divert + '\'' +
                 '}';
     }

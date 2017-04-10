@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by obrusvit on 8.4.17.
  */
-public class RunOnGson implements Serializable{
+public class RunOn implements Serializable{
 
     boolean runOn;
 
@@ -19,7 +19,7 @@ public class RunOnGson implements Serializable{
 
     @Override
     public String toString() {
-        return "RunOnGson{" +
+        return "RunOn{" +
                 "runOn=" + runOn +
                 '}';
     }

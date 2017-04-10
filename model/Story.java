@@ -2,7 +2,7 @@ package model;
 
 
 
-import gson_objects.OptionGson;
+import gson_objects.Option;
 import gson_objects.StoryBasicGson;
 
 import java.io.Serializable;
@@ -93,7 +93,7 @@ public class Story implements Serializable{
         return stitchHashMap.get(getActualStitch().getDivertName());
     }
 
-    public ArrayList<OptionGson> getActualStitchOption(){
+    public ArrayList<Option> getActualStitchOption(){
         if(!isActualStitchDiverted()) {
             return getActualStitch().getOptions();
         }else{

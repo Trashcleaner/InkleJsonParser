@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by obrusvit on 8.4.17.
  */
-public class IfConditionGson implements Serializable{
+public class IfCondition implements Serializable{
     String ifCondition;
 
     public void setIfCondition(String ifCondition) {
@@ -18,7 +18,7 @@ public class IfConditionGson implements Serializable{
 
     @Override
     public String toString() {
-        return "IfConditionGson{" +
+        return "IfCondition{" +
                 "ifCondition='" + ifCondition + '\'' +
                 '}';
     }

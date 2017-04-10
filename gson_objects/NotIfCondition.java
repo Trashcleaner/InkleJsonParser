@@ -3,7 +3,7 @@ package gson_objects;
 /**
  * Created by obrusvit on 8.4.17.
  */
-public class NotIfConditionGson {
+public class NotIfCondition {
     String notIfCondition;
 
     public void setNotIfCondition(String notIfCondition) {
@@ -16,7 +16,7 @@ public class NotIfConditionGson {
 
     @Override
     public String toString() {
-        return "NotIfConditionGson{" +
+        return "NotIfCondition{" +
                 "notIfCondition='" + notIfCondition + '\'' +
                 '}';
     }

@@ -3,8 +3,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import com.google.gson.internal.LinkedTreeMap;
-import gson_objects.DivertGson;
-import gson_objects.OptionGson;
+import gson_objects.Option;
 import gson_objects.StoryBasicGson;
 import model.Stitch;
 import model.Story;
@@ -71,19 +70,19 @@ public class StoryJsonParser {
             Collection content = (Collection)stitch.get("content");
             String json = gson.toJson(content);
             JsonArray array = parser.parse(json).getAsJsonArray();
-            ArrayList<OptionGson> optionsToAddedStitch = new ArrayList<>();
+            ArrayList<Option> optionsToAddedStitch = new ArrayList<>();
             boolean isDiverted = false;
             String divertName = null;
             for (int j = 1; j < array.size(); j++) {
                 //TADY BUDE VYUZIT TYPE ADAPTER
                 /*String s = array.get(j).toString();
                 if(s.contains("\"linkPath\":") && s.contains("\"option\":")){
-                    OptionGson option = gson.fromJson(s, OptionGson.class);
+                    Option option = gson.fromJson(s, Option.class);
                     optionsToAddedStitch.add(option);
                 }
                 if(s.contains("{\"divert\":")){
                     isDiverted = true;
-                    DivertGson divert = gson.fromJson(s, DivertGson.class);
+                    Divert divert = gson.fromJson(s, Divert.class);
                     divertName = divert.getDivert();
 
                 }*/

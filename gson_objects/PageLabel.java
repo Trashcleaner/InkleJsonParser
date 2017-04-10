@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by obrusvit on 8.4.17.
  */
-public class PageLabelGson implements Serializable {
+public class PageLabel implements Serializable {
 
     String pageLabel;
 
@@ -19,7 +19,7 @@ public class PageLabelGson implements Serializable {
 
     @Override
     public String toString() {
-        return "PageLabelGson{" +
+        return "PageLabel{" +
                 "pageLabel='" + pageLabel + '\'' +
                 '}';
     }

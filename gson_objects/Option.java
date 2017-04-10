@@ -6,11 +6,11 @@ import java.util.ArrayList;
 /**
  * Created by obrusvit on 18.2.17.
  */
-public class OptionGson implements Serializable{
+public class Option implements Serializable{
     private String linkPath;
     private String option;
-    private ArrayList<IfConditionGson> ifConditions;
-    private ArrayList<NotIfConditionGson> notIfConditions;
+    private ArrayList<IfCondition> ifConditions;
+    private ArrayList<NotIfCondition> notIfConditions;
 
     public void setLinkPath(String linkPath) {
         this.linkPath = linkPath;
@@ -20,11 +20,11 @@ public class OptionGson implements Serializable{
         this.option = option;
     }
 
-    public void setIfConditions(ArrayList<IfConditionGson> ifConditions) {
+    public void setIfConditions(ArrayList<IfCondition> ifConditions) {
         this.ifConditions = ifConditions;
     }
 
-    public void setNotIfConditions(ArrayList<NotIfConditionGson> notIfConditions) {
+    public void setNotIfConditions(ArrayList<NotIfCondition> notIfConditions) {
         this.notIfConditions = notIfConditions;
     }
 
@@ -36,23 +36,23 @@ public class OptionGson implements Serializable{
         return option;
     }
 
-    public ArrayList<IfConditionGson> getIfConditions() {
+    public ArrayList<IfCondition> getIfConditions() {
         return ifConditions;
     }
 
-    public ArrayList<NotIfConditionGson> getNotIfConditions() {
+    public ArrayList<NotIfCondition> getNotIfConditions() {
         return notIfConditions;
     }
 
     @Override
     public String toString() {
-        /*return "OptionGson{" +
+        return "Option{" +
                 "linkPath='" + linkPath + '\'' +
                 ", option='" + option + '\'' +
                 ", ifConditions=" + ifConditions +
                 ", notIfConditions=" + notIfConditions +
-                '}';*/
-        return "Option is \""+option+ "\" and linkPath is " +linkPath;
+                '}';
+        //return "Option is \""+option+ "\" and linkPath is " +linkPath;
     }
 }
 

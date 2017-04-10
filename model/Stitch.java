@@ -25,15 +25,15 @@ public class Stitch implements Serializable{
     /**
      * List of options, one to be chosen to continue the story.
      */
-    private ArrayList<OptionGson> options = new ArrayList<>();
+    private ArrayList<Option> options = new ArrayList<>();
 
-    private IfConditionGson ifCondition;
-    private NotIfConditionGson notIfCondition;
+    private IfCondition ifCondition;
+    private NotIfCondition notIfCondition;
 
     /**
      * "Name" of the Stitch which is a seamless (not an option) continuation of the "text".
      */
-    private DivertGson divertName;
+    private Divert divertName;
     private boolean hasDivert = false;
 
     /**
@@ -45,11 +45,11 @@ public class Stitch implements Serializable{
      *   etc.
      *
      */
-    private FlagNameGson flagName;
+    private FlagName flagName;
 
-    private PageLabelGson pageLabel;
-    private PageNumGson pageName;
-    private RunOnGson runOn;
+    private PageLabel pageLabel;
+    private PageNum pageName;
+    private RunOn runOn;
 
     public Stitch(){
 
@@ -72,35 +72,35 @@ public class Stitch implements Serializable{
         this.text = text;
     }
 
-    public ArrayList<OptionGson> getOptions() {
+    public ArrayList<Option> getOptions() {
         return options;
     }
 
-    public void setOptions(ArrayList<OptionGson> options) {
+    public void setOptions(ArrayList<Option> options) {
         this.options = options;
     }
 
-    public IfConditionGson getIfCondition() {
+    public IfCondition getIfCondition() {
         return ifCondition;
     }
 
-    public void setIfCondition(IfConditionGson ifCondition) {
+    public void setIfCondition(IfCondition ifCondition) {
         this.ifCondition = ifCondition;
     }
 
-    public NotIfConditionGson getNotIfCondition() {
+    public NotIfCondition getNotIfCondition() {
         return notIfCondition;
     }
 
-    public void setNotIfCondition(NotIfConditionGson notIfCondition) {
+    public void setNotIfCondition(NotIfCondition notIfCondition) {
         this.notIfCondition = notIfCondition;
     }
 
-    public DivertGson getDivertName() {
+    public Divert getDivertName() {
         return divertName;
     }
 
-    public void setDivertName(DivertGson divertName) {
+    public void setDivertName(Divert divertName) {
         this.divertName = divertName;
     }
 
@@ -112,35 +112,35 @@ public class Stitch implements Serializable{
         this.hasDivert = hasDivert;
     }
 
-    public FlagNameGson getFlagName() {
+    public FlagName getFlagName() {
         return flagName;
     }
 
-    public void setFlagName(FlagNameGson flagName) {
+    public void setFlagName(FlagName flagName) {
         this.flagName = flagName;
     }
 
-    public PageLabelGson getPageLabel() {
+    public PageLabel getPageLabel() {
         return pageLabel;
     }
 
-    public void setPageLabel(PageLabelGson pageLabel) {
+    public void setPageLabel(PageLabel pageLabel) {
         this.pageLabel = pageLabel;
     }
 
-    public PageNumGson getPageName() {
+    public PageNum getPageName() {
         return pageName;
     }
 
-    public void setPageName(PageNumGson pageName) {
+    public void setPageName(PageNum pageName) {
         this.pageName = pageName;
     }
 
-    public RunOnGson getRunOn() {
+    public RunOn getRunOn() {
         return runOn;
     }
 
-    public void setRunOn(RunOnGson runOn) {
+    public void setRunOn(RunOn runOn) {
         this.runOn = runOn;
     }
 

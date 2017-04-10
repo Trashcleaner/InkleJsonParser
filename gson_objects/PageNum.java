@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by obrusvit on 8.4.17.
  */
-public class PageNumGson implements Serializable{
+public class PageNum implements Serializable{
 
     int pageNum;
 
@@ -20,7 +20,7 @@ public class PageNumGson implements Serializable{
 
     @Override
     public String toString() {
-        return "PageNumGson{" +
+        return "PageNum{" +
                 "pageNum=" + pageNum +
                 '}';
     }
