@@ -2,6 +2,7 @@ import com.google.gson.*;
 import com.google.gson.internal.LinkedTreeMap;
 import gson_objects.StoryBasicGson;
 import model.Stitch;
+import model.Story;
 
 import java.util.*;
 
@@ -21,11 +22,11 @@ public class Main {
         Main main = new Main();
         //main.seeGoogleExample();
         //main.execute();
-        main.executeWithTypeAdapter();
+        //main.executeWithTypeAdapter();
+        StoryJsonParser parser = new StoryJsonParser();
+        Story story = parser.parseStory(ConstantTestJsons.jsonZrbj);
 
-        //StoryJsonParser parser = new StoryJsonParser();
-        //parser.parseStory(ConstantTestJsons.jsonZrbj);
-
+        story.printTheWholeStory();
     }
 
     private void executeWithTypeAdapter() {

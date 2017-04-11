@@ -34,7 +34,12 @@ public class Stitch implements Serializable{
      * "Name" of the Stitch which is a seamless (not an option) continuation of the "text".
      */
     private Divert divertName;
-    private boolean hasDivert = false;
+
+    /**
+     * If runOn is initialized and set to true,
+     * then it means this Stitch is diverted.
+     */
+    private RunOn runOn;
 
     /**
      * Information about whether actual Stitch add flag to the story.
@@ -49,7 +54,6 @@ public class Stitch implements Serializable{
 
     private PageLabel pageLabel;
     private PageNum pageName;
-    private RunOn runOn;
 
     public Stitch(){
 
@@ -104,14 +108,6 @@ public class Stitch implements Serializable{
         this.divertName = divertName;
     }
 
-    public boolean hasDivert() {
-        return hasDivert;
-    }
-
-    public void setHasDivert(boolean hasDivert) {
-        this.hasDivert = hasDivert;
-    }
-
     public FlagName getFlagName() {
         return flagName;
     }
@@ -154,7 +150,6 @@ public class Stitch implements Serializable{
                 ", ifCondition=" + ifCondition +
                 ", notIfCondition=" + notIfCondition +
                 ", divertName='" + divertName + '\'' +
-                ", hasDivert=" + hasDivert +
                 ", flagName=" + flagName +
                 ", pageLabel=" + pageLabel +
                 ", pageName=" + pageName +

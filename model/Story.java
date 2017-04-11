@@ -19,26 +19,36 @@ import java.util.List;
  */
 public class Story implements Serializable{
 
+    /**
+     * HashMap of all Stitches easily searchable.
+     * KEYs are the names.
+     * VALUEs are the POJO of the Stitches (class Stitch)
+     */
     private HashMap<String, Stitch> stitchHashMap = new HashMap<>();
-    private Stitch actualStitch;
+
+    /**
+     * POJO containing all the very basic info.
+     */
     private StoryBasicGson storyBasicData;
 
 
+    /**
+     * Stitch which is visible/read right now.
+     * When .json is parsed for the first time,
+     * it is set to initial value
+     */
+    private Stitch actualStitch;
     private List<Stitch> stitchDivertList = new ArrayList<>();
     private int actualDivert = 0;
 
 
 
     public void setActualStitch(String stitch) {
-
         this.actualStitch = stitchHashMap.get(stitch);
-
     }
 
     public void setActualStitch(Stitch stitch){
-
         this.actualStitch = stitch;
-
     }
 
     public void previousDivert(){
@@ -55,7 +65,7 @@ public class Story implements Serializable{
 
     public void loadDivertList(){
         Stitch firstStitch = actualStitch;
-        while (actualStitch.hasDivert()){
+        while (actualStitch.getRunOn().isRunOn()){
             stitchDivertList.add(actualStitch);
             setActualStitch(actualStitch.getDivertName().getDivert());
         }
@@ -86,7 +96,7 @@ public class Story implements Serializable{
     }
 
     public boolean isActualStitchDiverted(){
-        return getActualStitch().hasDivert();
+        return getActualStitch().getRunOn().isRunOn();
     }
 
     public Stitch getDivertedPartOfActualStitch(){

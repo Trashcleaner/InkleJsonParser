@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
+ * Gson adapter to parse Stitches from .json to POJO
+ * http://www.javacreed.com/gson-typeadapter-example/
+ *
  * Created by obrusvit on 9.4.17.
  */
 public class StitchTypeAdapter extends TypeAdapter<Stitch> {
@@ -51,38 +54,30 @@ public class StitchTypeAdapter extends TypeAdapter<Stitch> {
                             case "notIfConditions":
                             case "option":
                             case "linkPath":
-                                System.out.println("Consuming Option");
                                 Option option= readOption(jsonReader, var);
                                 options.add(option);
                                 break;
                             case "divert":
-                                System.out.println("Consuming divert");
                                 divertName = readDivert(jsonReader);
                                 break;
                             case "ifCondition":
-                                System.out.println("Consuming if condition");
                                 ifCondition = readIfCondition(jsonReader);
                                 break;
                             case "notIfCondition":
-                                System.out.println("Consuming if condition");
                                 notIfCondition = readNotIfCondition(jsonReader);
                                 break;
 
                             case "flagName":
-                                System.out.println("Consuming FlagName");
                                 flagName = readFlagName(jsonReader);
                                 break;
 
                             case "pageNum":
-                                System.out.println("Consuming PageNum");
                                 pageNum = readPageNum(jsonReader);
                                 break;
                             case "pageLabel":
-                                System.out.println("Consuming PageLabel");
                                 pageLabel = readPageLabel(jsonReader);
                                 break;
                             case "runOn":
-                                System.out.println("Consuming runOn");
                                 runOn = readRunOn(jsonReader);
                             default:
                                 jsonReader.skipValue();
@@ -90,7 +85,6 @@ public class StitchTypeAdapter extends TypeAdapter<Stitch> {
                         }
 
                     }
-                    ///jsonReader.skipValue(); //toto pujde prych po implementaci read* methods
                 }
                 jsonReader.endObject();
             }
