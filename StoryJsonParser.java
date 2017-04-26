@@ -33,9 +33,8 @@ public class StoryJsonParser {
     private void loadStoryObjectWithData(Story storyToLoad, String json, Gson gson){
         StoryBasicGson storyBasics = gson.fromJson(json, StoryBasicGson.class);
 
-
         /*
-        The following 2 lines seems like a big ****
+        The following 2 lines seems weird but..
         Object o is a LinkedTreeMap so I need to cast it thrice to get LinkedTreeMap of stitches.
          */
         Object o = gson.fromJson(json, Object.class);

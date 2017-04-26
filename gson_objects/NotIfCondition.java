@@ -1,9 +1,11 @@
 package gson_objects;
 
+import java.io.Serializable;
+
 /**
  * Created by obrusvit on 8.4.17.
  */
-public class NotIfCondition {
+public class NotIfCondition implements Serializable{
     String notIfCondition;
 
     public void setNotIfCondition(String notIfCondition) {
