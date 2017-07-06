@@ -1,4 +1,8 @@
 /**
+ * There are several InkleWriter stories copied for testing purposes.
+ * In real interpreter written in Java. These Strings would be saved
+ * in a separate file.
+ *
  * Created by obrusvit on 8.4.17.
  */
 public class ConstantTestJsons {

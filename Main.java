@@ -20,11 +20,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*StoryJsonParser parser = new StoryJsonParser();
-        Story story = parser.parseStory(ConstantTestJsons.jsonMusgrave);
+        StoryJsonParser parser = new StoryJsonParser();
+        Story story = new Story();
+        parser.parseStory(ConstantTestJsons.jsonMusgrave, story);
 
-        story.printTheWholeStory();*/
-        new Main().execute();
+        story.printTheWholeStory();
 
     }
 
