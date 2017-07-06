@@ -8,12 +8,14 @@ import java.util.ArrayList;
 
 /**
  * Representation of a stitch of a story.
+ *
  * Created by obrusvit on 19.2.17.
  */
 public class Stitch implements Serializable{
 
     /**
      * Name of the Stitch. First 16 characters of the "text" in camel syntax.
+     *
      */
     private String name;
 
@@ -27,8 +29,10 @@ public class Stitch implements Serializable{
      */
     private ArrayList<Option> options = new ArrayList<>();
 
-    private IfCondition ifCondition;
-    private NotIfCondition notIfCondition;
+    private ArrayList<IfCondition> ifConditions = new ArrayList<>();
+    private ArrayList<NotIfCondition> notIfConditions = new ArrayList<>();
+
+
 
     /**
      * "Name" of the Stitch which is a seamless (not an option) continuation of the "text".
@@ -42,7 +46,7 @@ public class Stitch implements Serializable{
     private RunOn runOn;
 
     /**
-     * Information about whether actual Stitch add flag to the story.
+     * Information about whether actual Stitch add flags to the story.
      * For example, a Stitch can grant the Story:
      *   a "visited this Stitch" token,
      *   a "picked a sword" token,
@@ -50,7 +54,7 @@ public class Stitch implements Serializable{
      *   etc.
      *
      */
-    private FlagName flagName;
+    private ArrayList<FlagName> flagNames;
 
     private PageLabel pageLabel;
     private PageNum pageName;
@@ -84,20 +88,20 @@ public class Stitch implements Serializable{
         this.options = options;
     }
 
-    public IfCondition getIfCondition() {
-        return ifCondition;
+    public ArrayList<IfCondition> getIfConditions() {
+        return ifConditions;
     }
 
-    public void setIfCondition(IfCondition ifCondition) {
-        this.ifCondition = ifCondition;
+    public void setIfConditions(ArrayList<IfCondition> ifConditions) {
+        this.ifConditions = ifConditions;
     }
 
-    public NotIfCondition getNotIfCondition() {
-        return notIfCondition;
+    public ArrayList<NotIfCondition> getNotIfConditions() {
+        return notIfConditions;
     }
 
-    public void setNotIfCondition(NotIfCondition notIfCondition) {
-        this.notIfCondition = notIfCondition;
+    public void setNotIfConditions(ArrayList<NotIfCondition> notIfConditions) {
+        this.notIfConditions = notIfConditions;
     }
 
     public Divert getDivertName() {
@@ -108,12 +112,13 @@ public class Stitch implements Serializable{
         this.divertName = divertName;
     }
 
-    public FlagName getFlagName() {
-        return flagName;
+
+    public ArrayList<FlagName> getFlagNames() {
+        return flagNames;
     }
 
-    public void setFlagName(FlagName flagName) {
-        this.flagName = flagName;
+    public void setFlagNames(ArrayList<FlagName> flagNames) {
+        this.flagNames = flagNames;
     }
 
     public PageLabel getPageLabel() {
@@ -147,13 +152,13 @@ public class Stitch implements Serializable{
                 "name='" + name + '\'' +
                 ", text='" + text + '\'' +
                 ", options=" + options +
-                ", ifCondition=" + ifCondition +
-                ", notIfCondition=" + notIfCondition +
-                ", divertName='" + divertName + '\'' +
-                ", flagName=" + flagName +
+                ", ifConditions=" + ifConditions +
+                ", notIfConditions=" + notIfConditions +
+                ", divertName=" + divertName +
+                ", runOn=" + runOn +
+                ", flagNames=" + flagNames +
                 ", pageLabel=" + pageLabel +
                 ", pageName=" + pageName +
-                ", runOn=" + runOn +
                 '}';
     }
 }

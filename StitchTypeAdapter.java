@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Gson adapter to parse Stitches from .json to POJO
  * http://www.javacreed.com/gson-typeadapter-example/
- *
+ * <p>
  * Created by obrusvit on 9.4.17.
  */
 public class StitchTypeAdapter extends TypeAdapter<Stitch> {
@@ -24,10 +24,12 @@ public class StitchTypeAdapter extends TypeAdapter<Stitch> {
         String name = null;
         String text = null;
         ArrayList<Option> options = new ArrayList<>(5);
-        IfCondition ifCondition = null;
-        NotIfCondition notIfCondition = null;
+
+        ArrayList<IfCondition> ifConditions = new ArrayList<>();
+        ArrayList<NotIfCondition> notIfConditions = new ArrayList<>();
+
         Divert divertName = null;
-        FlagName flagName = null;
+        ArrayList<FlagName> flagNames = new ArrayList<>(5);
         PageLabel pageLabel = null;
         PageNum pageNum = null;
         RunOn runOn = null;
@@ -43,32 +45,35 @@ public class StitchTypeAdapter extends TypeAdapter<Stitch> {
         text = jsonReader.nextString(); //actual text
 
         //PARSING CONTENT ARRAY
-        while(jsonReader.hasNext()){
-            if(jsonReader.peek().equals(JsonToken.BEGIN_OBJECT)){
+        while (jsonReader.hasNext()) {
+            if (jsonReader.peek().equals(JsonToken.BEGIN_OBJECT)) {
                 jsonReader.beginObject(); //object in array
-                while(jsonReader.hasNext()){
-                    if(jsonReader.peek().equals(JsonToken.NAME)) {
+                while (jsonReader.hasNext()) {
+                    if (jsonReader.peek().equals(JsonToken.NAME)) {
                         String var = jsonReader.nextName();
-                        switch (var){
+                        switch (var) {
                             case "ifConditions":
                             case "notIfConditions":
                             case "option":
                             case "linkPath":
-                                Option option= readOption(jsonReader, var);
+                                Option option = readOption(jsonReader, var);
                                 options.add(option);
                                 break;
                             case "divert":
                                 divertName = readDivert(jsonReader);
                                 break;
                             case "ifCondition":
-                                ifCondition = readIfCondition(jsonReader);
+                                IfCondition ifCondition = readIfCondition(jsonReader);
+                                ifConditions.add(ifCondition);
                                 break;
                             case "notIfCondition":
-                                notIfCondition = readNotIfCondition(jsonReader);
+                                NotIfCondition notIfCondition = readNotIfCondition(jsonReader);
+                                notIfConditions.add(notIfCondition);
                                 break;
 
                             case "flagName":
-                                flagName = readFlagName(jsonReader);
+                                FlagName flagName = readFlagName(jsonReader);
+                                flagNames.add(flagName);
                                 break;
 
                             case "pageNum":
@@ -100,10 +105,10 @@ public class StitchTypeAdapter extends TypeAdapter<Stitch> {
         stitch.setName(name);
         stitch.setText(text);
         stitch.setOptions(options);
-        stitch.setIfCondition(ifCondition);
-        stitch.setNotIfCondition(notIfCondition);
+        stitch.setIfConditions(ifConditions);
+        stitch.setNotIfConditions(notIfConditions);
         stitch.setDivertName(divertName);
-        stitch.setFlagName(flagName);
+        stitch.setFlagNames(flagNames);
         stitch.setPageLabel(pageLabel);
         stitch.setPageName(pageNum);
         stitch.setRunOn(runOn);
@@ -112,18 +117,18 @@ public class StitchTypeAdapter extends TypeAdapter<Stitch> {
     }
 
 
-    private Option readOption(JsonReader jsonReader, String var) throws IOException{
+    private Option readOption(JsonReader jsonReader, String var) throws IOException {
 
         Option ret = new Option();
         ArrayList<IfCondition> ifConditions = new ArrayList<>();
-        ArrayList<NotIfCondition> notIfConditions  = new ArrayList<>();
+        ArrayList<NotIfCondition> notIfConditions = new ArrayList<>();
 
         boolean end;
         do {
 
             switch (var) {
                 case "ifConditions":
-                    if(jsonReader.peek().equals(JsonToken.BEGIN_ARRAY)) {
+                    if (jsonReader.peek().equals(JsonToken.BEGIN_ARRAY)) {
                         jsonReader.beginArray();
                         while (jsonReader.hasNext()) {
                             if (jsonReader.peek().equals(JsonToken.BEGIN_OBJECT)) {
@@ -137,12 +142,12 @@ public class StitchTypeAdapter extends TypeAdapter<Stitch> {
                             }
                         }
                         jsonReader.endArray();
-                    }else{
+                    } else {
                         jsonReader.nextNull();
                     }
                     break;
                 case "notIfConditions":
-                    if(jsonReader.peek().equals(JsonToken.BEGIN_ARRAY)) {
+                    if (jsonReader.peek().equals(JsonToken.BEGIN_ARRAY)) {
                         jsonReader.beginArray();
                         while (jsonReader.hasNext()) {
                             if (jsonReader.peek().equals(JsonToken.BEGIN_OBJECT)) {
@@ -156,7 +161,7 @@ public class StitchTypeAdapter extends TypeAdapter<Stitch> {
                             }
                         }
                         jsonReader.endArray();
-                    }else{
+                    } else {
                         jsonReader.nextNull();
                     }
                     break;
@@ -169,9 +174,9 @@ public class StitchTypeAdapter extends TypeAdapter<Stitch> {
             }
 
             end = jsonReader.peek().equals(JsonToken.END_OBJECT);
-            if(!end) var = jsonReader.nextName();
+            if (!end) var = jsonReader.nextName();
 
-        }while(!end);
+        } while (!end);
 
         ret.setIfConditions(ifConditions);
         ret.setNotIfConditions(notIfConditions);
@@ -180,13 +185,13 @@ public class StitchTypeAdapter extends TypeAdapter<Stitch> {
     }
 
 
-    private IfCondition readIfCondition(JsonReader jsonReader) throws IOException{
+    private IfCondition readIfCondition(JsonReader jsonReader) throws IOException {
         IfCondition ret = new IfCondition();
         ret.setIfCondition(jsonReader.nextString());
         return ret;
     }
 
-    private NotIfCondition readNotIfCondition(JsonReader jsonReader) throws IOException{
+    private NotIfCondition readNotIfCondition(JsonReader jsonReader) throws IOException {
         NotIfCondition ret = new NotIfCondition();
         ret.setNotIfCondition(jsonReader.nextString());
         return ret;
@@ -201,28 +206,27 @@ public class StitchTypeAdapter extends TypeAdapter<Stitch> {
     }
 
 
-
-    private FlagName readFlagName(JsonReader jsonReader) throws IOException{
+    private FlagName readFlagName(JsonReader jsonReader) throws IOException {
         FlagName ret = new FlagName();
         ret.setFlagName(jsonReader.nextString());
         return ret;
 
     }
 
-    private PageNum readPageNum(JsonReader jsonReader) throws IOException{
+    private PageNum readPageNum(JsonReader jsonReader) throws IOException {
         PageNum ret = new PageNum();
         ret.setPageNum(jsonReader.nextInt());
         return ret;
     }
 
-    private PageLabel readPageLabel(JsonReader jsonReader) throws IOException{
+    private PageLabel readPageLabel(JsonReader jsonReader) throws IOException {
         PageLabel ret = new PageLabel();
         ret.setPageLabel(jsonReader.nextString());
         return ret;
     }
 
 
-    private RunOn readRunOn(JsonReader jsonReader) throws IOException{
+    private RunOn readRunOn(JsonReader jsonReader) throws IOException {
         RunOn ret = new RunOn();
         ret.setRunOn(jsonReader.nextBoolean());
         return ret;

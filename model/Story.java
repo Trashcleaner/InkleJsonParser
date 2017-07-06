@@ -2,7 +2,7 @@ package model;
 
 
 
-import gson_objects.Option;
+
 import gson_objects.StoryBasicGson;
 
 import java.io.Serializable;
@@ -38,8 +38,6 @@ public class Story implements Serializable{
      * it is set to initial value
      */
     private Stitch actualStitch;
-    private List<Stitch> stitchDivertList = new ArrayList<>();
-    private int actualDivert = 0;
 
 
 
@@ -49,33 +47,6 @@ public class Story implements Serializable{
 
     public void setActualStitch(Stitch stitch){
         this.actualStitch = stitch;
-    }
-
-    public void previousDivert(){
-        if(actualDivert > 0) {
-            setActualStitch(stitchDivertList.get(--actualDivert));
-        }
-    }
-
-    public void nextDivert(){
-        if(actualDivert < (stitchDivertList.size())) {
-            setActualStitch(stitchDivertList.get(++actualDivert));
-        }
-    }
-
-    public void loadDivertList(){
-        Stitch firstStitch = actualStitch;
-        while (actualStitch.getRunOn().isRunOn()){
-            stitchDivertList.add(actualStitch);
-            setActualStitch(actualStitch.getDivertName().getDivert());
-        }
-        stitchDivertList.add(actualStitch); //last one which already has options
-        setActualStitch(firstStitch);
-    }
-
-    public void cleanDivertList(){
-        stitchDivertList.clear();
-        actualDivert = 0;
     }
 
     public void addToStitchHashMap(String key, Stitch value){
@@ -95,21 +66,12 @@ public class Story implements Serializable{
         return storyBasicData;
     }
 
-    public boolean isActualStitchDiverted(){
-        return getActualStitch().getRunOn().isRunOn();
+    public boolean isActualStitchDiverted() {
+        return getActualStitch().getDivertName() != null;
     }
 
-    public Stitch getDivertedPartOfActualStitch(){
-        return stitchHashMap.get(getActualStitch().getDivertName());
-    }
 
-    public ArrayList<Option> getActualStitchOption(){
-        if(!isActualStitchDiverted()) {
-            return getActualStitch().getOptions();
-        }else{
-            return null;
-        }
-    }
+
 
     public Stitch getStitchBasedOnKeyName(String keyName){
         return stitchHashMap.get(keyName);
@@ -126,5 +88,14 @@ public class Story implements Serializable{
     }
 
 
+
+    @Override
+    public String toString() {
+        return "Story{" +
+                "stitchHashMap=" + stitchHashMap +
+                ", storyBasicData=" + storyBasicData +
+                ", actualStitch=" + actualStitch +
+                '}';
+    }
 }
 
